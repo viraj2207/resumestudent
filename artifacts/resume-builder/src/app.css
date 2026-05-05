@@ -1302,6 +1302,212 @@ select option { background: #1e293b; color: #e2e8f0; }
 .resume-techpro .r-summary { font-size: 0.85rem; color: #94a3b8; line-height: 1.7; font-family: 'JetBrains Mono', monospace; }
 
 /* ============================================
+   TEMPLATE 7: BOLD IMPACT
+   ============================================ */
+.resume-bold { font-family: 'Inter', sans-serif; background:#fff; color:#111; }
+.r-bold-header { background:#111; color:#fff; padding:2rem 2.5rem; }
+.r-bold-name { font-size:2.4rem; font-weight:900; letter-spacing:-0.04em; line-height:1; margin-bottom:0.35rem; }
+.r-bold-role { font-size:0.95rem; font-weight:500; color:#f97316; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.75rem; }
+.r-bold-contacts { display:flex; flex-wrap:wrap; gap:0.25rem 0; font-size:0.78rem; color:#9ca3af; align-items:center; }
+.r-bold-sep { margin:0 0.75rem; color:#374151; }
+.r-bold-body { padding:1.75rem 2.5rem; }
+.r-bold-section { margin-bottom:1.5rem; }
+.r-bold-title { font-size:0.72rem; font-weight:800; letter-spacing:0.15em; text-transform:uppercase; color:#111; padding-left:0.75rem; border-left:4px solid #f97316; margin-bottom:0.75rem; }
+.r-bold-item { margin-bottom:1rem; padding-left:0.75rem; border-left:2px solid #f3f4f6; }
+.r-bold-item-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.15rem; }
+.r-bold-item-head strong { font-size:0.9rem; font-weight:700; color:#111; }
+.r-bold-item-head span { font-size:0.75rem; color:#6b7280; }
+.r-bold-company { font-size:0.82rem; color:#f97316; font-weight:600; margin-bottom:0.25rem; }
+.r-bold-text { font-size:0.82rem; color:#374151; line-height:1.55; }
+.r-bold-skills { display:flex; flex-wrap:wrap; gap:0.4rem; }
+.r-bold-skill { padding:0.3rem 0.8rem; border:2px solid #111; border-radius:3px; font-size:0.78rem; font-weight:700; color:#111; }
+
+/* ============================================
+   TEMPLATE 8: ACADEMIC SCHOLAR
+   ============================================ */
+.resume-academic { font-family:'Georgia',serif; background:#fffef5; color:#1a1a1a; padding:0; }
+.r-acad-header { text-align:center; padding:2.5rem 2.5rem 1.25rem; }
+.r-acad-name { font-size:2rem; font-weight:700; color:#1a1a1a; letter-spacing:0.02em; margin-bottom:0.3rem; }
+.r-acad-role { font-size:0.9rem; color:#5c4a1e; font-style:italic; margin-bottom:0.5rem; }
+.r-acad-contact { font-size:0.8rem; color:#6b5a2a; }
+.r-acad-rule { height:2px; background:linear-gradient(90deg,transparent,#c8a96e,transparent); margin:0 2.5rem; }
+.r-acad-body { padding:1.5rem 2.5rem 2rem; }
+.r-acad-section { margin-bottom:1.5rem; }
+.r-acad-title { font-size:0.9rem; font-weight:700; color:#5c4a1e; text-transform:uppercase; letter-spacing:0.06em; border-bottom:1px solid #c8a96e; padding-bottom:0.25rem; margin-bottom:0.75rem; }
+.r-acad-item { margin-bottom:0.9rem; }
+.r-acad-item-row { display:flex; justify-content:space-between; align-items:baseline; }
+.r-acad-inst { font-size:0.9rem; font-weight:700; color:#1a1a1a; }
+.r-acad-date { font-size:0.78rem; color:#78716c; font-style:italic; }
+.r-acad-sub { font-size:0.83rem; color:#5c4a1e; font-style:italic; margin:0.1rem 0 0.25rem; }
+.r-acad-text { font-size:0.83rem; color:#374151; line-height:1.6; }
+.r-acad-skills { font-size:0.83rem; color:#374151; line-height:1.8; }
+.r-acad-skill { font-style:italic; }
+
+/* ============================================
+   TEMPLATE 9: STARTUP VIBE
+   ============================================ */
+.resume-startup { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b; }
+.r-startup-header { background:#fff; padding:1.75rem 2rem; display:flex; gap:1.25rem; align-items:center; border-bottom:1px solid #e2e8f0; }
+.r-startup-avatar { width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-size:1.6rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+.r-startup-name { font-size:1.4rem; font-weight:800; color:#0f172a; letter-spacing:-0.02em; }
+.r-startup-role { font-size:0.82rem; color:#6366f1; font-weight:600; margin:0.15rem 0 0.5rem; }
+.r-startup-contacts { display:flex; flex-wrap:wrap; gap:0.25rem; }
+.r-startup-contact { font-size:0.73rem; color:#64748b; background:#f1f5f9; padding:0.15rem 0.5rem; border-radius:4px; }
+.r-startup-links { margin-left:auto; text-align:right; }
+.r-startup-link { font-size:0.75rem; color:#6366f1; margin-bottom:0.25rem; }
+.r-startup-body { padding:1.25rem 1.5rem; }
+.r-startup-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.r-startup-card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:1.25rem; margin-bottom:1rem; box-shadow:0 1px 3px rgba(0,0,0,0.04); }
+.r-startup-section-title { font-size:0.78rem; font-weight:800; color:#6366f1; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.75rem; }
+.r-startup-item { margin-bottom:0.9rem; padding-bottom:0.9rem; border-bottom:1px solid #f1f5f9; }
+.r-startup-item:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.r-startup-item-title { font-size:0.87rem; font-weight:700; color:#0f172a; }
+.r-startup-item-sub { font-size:0.78rem; color:#64748b; margin:0.15rem 0 0.35rem; }
+.r-startup-text { font-size:0.78rem; color:#475569; line-height:1.5; }
+.r-startup-skills { display:flex; flex-wrap:wrap; gap:0.35rem; }
+.r-startup-badge { padding:0.2rem 0.6rem; border-radius:100px; font-size:0.72rem; font-weight:600; border:1px solid; }
+
+/* ============================================
+   TEMPLATE 10: CORPORATE NAVY
+   ============================================ */
+.resume-corporate { font-family:'Inter',sans-serif; background:#fff; color:#1e293b; display:grid; grid-template-columns:240px 1fr; min-height:100%; }
+.r-corp-sidebar { background:#0f2044; padding:2.5rem 1.5rem; color:#e2e8f0; }
+.r-corp-logo { width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);color:#fff;font-size:1.3rem;font-weight:900;display:flex;align-items:center;justify-content:center;margin-bottom:1rem; }
+.r-corp-name { font-size:1.2rem; font-weight:800; color:#fff; letter-spacing:-0.02em; line-height:1.15; margin-bottom:0.25rem; }
+.r-corp-role { font-size:0.73rem; color:#93c5fd; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1.5rem; }
+.r-corp-divider { height:1px; background:rgba(255,255,255,0.1); margin-bottom:1.5rem; }
+.r-corp-section { margin-bottom:1.5rem; }
+.r-corp-stitle { font-size:0.68rem; font-weight:700; color:#60a5fa; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.6rem; }
+.r-corp-info { font-size:0.76rem; color:#cbd5e1; margin-bottom:0.35rem; word-break:break-all; }
+.r-corp-skill-row { margin-bottom:0.5rem; }
+.r-corp-bar { height:4px; background:rgba(255,255,255,0.1); border-radius:2px; overflow:hidden; margin-top:0.2rem; }
+.r-corp-bar-fill { height:100%; background:linear-gradient(90deg,#3b82f6,#93c5fd); border-radius:2px; }
+.r-corp-main { padding:2.5rem 2rem; }
+.r-corp-msection { margin-bottom:1.75rem; }
+.r-corp-mtitle { font-size:0.73rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#0f2044; border-bottom:2px solid #1d4ed8; padding-bottom:0.3rem; margin-bottom:0.9rem; }
+.r-corp-mitem { margin-bottom:1.1rem; }
+.r-corp-mhead { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.1rem; }
+.r-corp-mhead strong { font-size:0.9rem; font-weight:700; color:#0f172a; }
+.r-corp-mdate { font-size:0.73rem; color:#64748b; background:#f1f5f9; padding:0.1rem 0.4rem; border-radius:3px; }
+.r-corp-mcompany { font-size:0.82rem; color:#1d4ed8; font-weight:600; margin-bottom:0.25rem; }
+.r-corp-mtext { font-size:0.82rem; color:#475569; line-height:1.55; }
+
+/* ============================================
+   TEMPLATE 11: GRADIENT FLOW
+   ============================================ */
+.resume-gradient { font-family:'Inter',sans-serif; background:#fff; color:#1e293b; }
+.r-grad-header { background:linear-gradient(135deg,#6366f1 0%,#8b5cf6 50%,#06b6d4 100%); padding:2.5rem; color:#fff; }
+.r-grad-name { font-size:2.2rem; font-weight:900; letter-spacing:-0.04em; margin-bottom:0.3rem; }
+.r-grad-role { font-size:0.88rem; color:rgba(255,255,255,0.8); font-weight:500; margin-bottom:0.75rem; }
+.r-grad-contacts { font-size:0.78rem; color:rgba(255,255,255,0.7); line-height:1.8; }
+.r-grad-body { display:grid; grid-template-columns:1fr 280px; gap:0; }
+.r-grad-left { padding:2rem; border-right:1px solid #f1f5f9; }
+.r-grad-right { padding:2rem; background:#fafafa; }
+.r-grad-section { margin-bottom:1.75rem; }
+.r-grad-stitle { font-size:0.73rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#6366f1; margin-bottom:0.75rem; padding-bottom:0.3rem; border-bottom:2px solid #e0e7ff; }
+.r-grad-item { margin-bottom:1rem; }
+.r-grad-item-title { font-size:0.9rem; font-weight:700; color:#1e293b; }
+.r-grad-item-sub { font-size:0.8rem; color:#6366f1; font-weight:600; margin:0.15rem 0 0.3rem; }
+.r-grad-item-sub span { color:#94a3b8; font-weight:400; }
+.r-grad-text { font-size:0.82rem; color:#475569; line-height:1.55; }
+.r-grad-skill-row { margin-bottom:0.6rem; }
+.r-grad-bar { height:5px; background:#e0e7ff; border-radius:3px; overflow:hidden; margin-top:0.25rem; }
+.r-grad-bar-fill { height:100%; background:linear-gradient(90deg,#6366f1,#8b5cf6); border-radius:3px; }
+
+/* ============================================
+   TEMPLATE 12: COMPACT PRO
+   ============================================ */
+.resume-compact { font-family:'Inter',sans-serif; background:#fff; color:#111; padding:1.5rem 2rem; font-size:0.82rem; }
+.r-cmp-header { border-bottom:2px solid #111; padding-bottom:0.6rem; margin-bottom:0.6rem; }
+.r-cmp-name { font-size:1.6rem; font-weight:900; letter-spacing:-0.03em; color:#111; }
+.r-cmp-contacts { font-size:0.72rem; color:#555; display:flex; flex-wrap:wrap; gap:0.1rem 0; margin-top:0.2rem; }
+.r-cmp-contacts span { }
+.r-cmp-summary { font-size:0.8rem; color:#374151; line-height:1.5; margin-bottom:0.75rem; padding:0.5rem; background:#f9fafb; border-left:3px solid #374151; }
+.r-cmp-section { margin-bottom:0.75rem; }
+.r-cmp-stitle { font-size:0.65rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#111; border-bottom:1px solid #e5e7eb; padding-bottom:0.15rem; margin-bottom:0.4rem; }
+.r-cmp-item { margin-bottom:0.5rem; }
+.r-cmp-row { display:flex; justify-content:space-between; align-items:baseline; }
+.r-cmp-row strong { font-size:0.82rem; font-weight:700; }
+.r-cmp-row span { font-size:0.72rem; color:#6b7280; }
+.r-cmp-sub { font-size:0.75rem; color:#555; font-style:italic; margin:0.05rem 0 0.1rem; }
+.r-cmp-desc { font-size:0.78rem; color:#374151; line-height:1.45; }
+.r-cmp-two-col { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:0.75rem; }
+.r-cmp-skills { display:flex; flex-wrap:wrap; gap:0.2rem; }
+.r-cmp-skill { padding:0.15rem 0.45rem; border:1px solid #d1d5db; border-radius:3px; font-size:0.7rem; color:#374151; }
+
+/* ============================================
+   TEMPLATE 13: ELEGANT SERIF
+   ============================================ */
+.resume-elegant { font-family:'Georgia',serif; background:#fffbf5; color:#1c1917; }
+.r-eleg-header { text-align:center; padding:2.5rem 2.5rem 1.5rem; background:linear-gradient(180deg,#fdf3dc 0%,#fffbf5 100%); }
+.r-eleg-ornament { font-size:0.8rem; color:#c8a96e; letter-spacing:0.5em; margin-bottom:1rem; }
+.r-eleg-name { font-family:'Playfair Display','Georgia',serif; font-size:2.5rem; font-weight:900; color:#1c1917; letter-spacing:0.01em; margin-bottom:0.3rem; }
+.r-eleg-role { font-size:0.88rem; color:#92400e; font-style:italic; letter-spacing:0.04em; margin-bottom:1rem; }
+.r-eleg-line { height:1px; background:linear-gradient(90deg,transparent,#c8a96e,transparent); margin:0 auto 1rem; max-width:400px; }
+.r-eleg-contacts { font-size:0.78rem; color:#78716c; }
+.r-eleg-body { display:grid; grid-template-columns:1fr 260px; gap:0; }
+.r-eleg-main { padding:2rem 2rem 2rem 2.5rem; border-right:1px solid #e7d9c3; }
+.r-eleg-side { padding:2rem 2.5rem 2rem 2rem; background:#fffaf0; }
+.r-eleg-section { margin-bottom:1.75rem; }
+.r-eleg-stitle { font-family:'Playfair Display','Georgia',serif; font-size:1rem; font-weight:700; color:#92400e; margin-bottom:0.75rem; }
+.r-eleg-item { margin-bottom:1.1rem; }
+.r-eleg-item-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.1rem; }
+.r-eleg-item-head em { font-size:0.88rem; color:#57534e; }
+.r-eleg-item-head span { font-size:0.75rem; color:#a8a29e; }
+.r-eleg-position { font-size:0.9rem; font-weight:700; color:#1c1917; margin-bottom:0.25rem; }
+.r-eleg-text { font-size:0.83rem; color:#57534e; line-height:1.65; }
+.r-eleg-skills { display:flex; flex-wrap:wrap; gap:0.35rem; }
+.r-eleg-skill { padding:0.25rem 0.7rem; border:1px solid #c8a96e; border-radius:3px; font-size:0.75rem; color:#78716c; background:#fffaf0; }
+
+/* ============================================
+   TEMPLATE 14: DARK MATTER
+   ============================================ */
+.resume-dark { font-family:'Inter',sans-serif; background:#0d1117; color:#e6edf3; min-height:100%; }
+.r-dark-header { padding:2.5rem 2.5rem 1.5rem; border-bottom:1px solid #21262d; }
+.r-dark-accent-line { width:48px; height:4px; background:linear-gradient(90deg,#39d353,#16d69b); border-radius:2px; margin-bottom:1.25rem; }
+.r-dark-name { font-size:2.4rem; font-weight:900; letter-spacing:-0.04em; color:#e6edf3; line-height:1; margin-bottom:0.35rem; }
+.r-dark-role { font-size:0.85rem; color:#39d353; font-weight:600; font-family:'JetBrains Mono',monospace; margin-bottom:0.75rem; }
+.r-dark-contacts { display:flex; flex-wrap:wrap; gap:0.25rem; align-items:center; font-size:0.78rem; color:#8b949e; }
+.r-dark-body { padding:1.5rem 2.5rem 2rem; }
+.r-dark-section { margin-bottom:1.5rem; }
+.r-dark-stitle { font-size:0.75rem; font-weight:700; color:#39d353; font-family:'JetBrains Mono',monospace; letter-spacing:0.05em; text-transform:lowercase; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem; }
+.r-dark-stitle::after { content:''; flex:1; height:1px; background:#21262d; }
+.r-dark-hash { color:#8b949e; margin-right:0.1rem; }
+.r-dark-item { margin-bottom:1.1rem; padding:0.875rem; background:#161b22; border:1px solid #21262d; border-radius:8px; }
+.r-dark-item-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.2rem; }
+.r-dark-item-head strong { font-size:0.88rem; font-weight:700; color:#e6edf3; }
+.r-dark-date { font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:#8b949e; }
+.r-dark-company { font-size:0.78rem; color:#39d353; margin-bottom:0.35rem; font-family:'JetBrains Mono',monospace; }
+.r-dark-text { font-size:0.8rem; color:#8b949e; line-height:1.6; }
+.r-dark-skills { display:flex; flex-wrap:wrap; gap:0.4rem; }
+.r-dark-skill { padding:0.22rem 0.65rem; background:#161b22; border:1px solid #30363d; border-radius:6px; font-size:0.75rem; color:#58a6ff; font-family:'JetBrains Mono',monospace; }
+
+/* ============================================
+   TEMPLATE 15: TWO TONE
+   ============================================ */
+.resume-twotone { font-family:'Inter',sans-serif; background:#fff; color:#1e293b; }
+.r-tt-header { display:grid; grid-template-columns:1fr 1fr; }
+.r-tt-left-head { background:#1e3a5f; padding:2rem 2rem 2rem 2.5rem; }
+.r-tt-right-head { background:#e8f4ff; padding:2rem 2.5rem 2rem 2rem; display:flex; flex-direction:column; justify-content:center; }
+.r-tt-name { font-size:1.8rem; font-weight:900; color:#fff; letter-spacing:-0.03em; line-height:1.1; margin-bottom:0.35rem; }
+.r-tt-role { font-size:0.82rem; color:#93c5fd; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; }
+.r-tt-contact { font-size:0.78rem; color:#1e3a5f; margin-bottom:0.25rem; font-weight:500; }
+.r-tt-body { display:grid; grid-template-columns:1fr 260px; }
+.r-tt-main { padding:2rem 2rem 2rem 2.5rem; }
+.r-tt-side { background:#f0f7ff; padding:2rem 2.5rem 2rem 2rem; border-left:1px solid #dbeafe; }
+.r-tt-section { margin-bottom:1.5rem; }
+.r-tt-stitle { font-size:0.73rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#1e3a5f; border-bottom:2px solid #bfdbfe; padding-bottom:0.3rem; margin-bottom:0.75rem; }
+.r-tt-item { margin-bottom:1rem; }
+.r-tt-item-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.1rem; }
+.r-tt-item-head strong { font-size:0.9rem; font-weight:700; color:#1e293b; }
+.r-tt-date { font-size:0.72rem; color:#64748b; background:#dbeafe; padding:0.1rem 0.4rem; border-radius:3px; }
+.r-tt-company { font-size:0.82rem; color:#1e3a5f; font-weight:600; margin-bottom:0.25rem; }
+.r-tt-text { font-size:0.82rem; color:#475569; line-height:1.55; }
+.r-tt-skill-row { margin-bottom:0.55rem; }
+.r-tt-bar { height:5px; background:#dbeafe; border-radius:3px; overflow:hidden; margin-top:0.2rem; }
+.r-tt-bar-fill { height:100%; background:linear-gradient(90deg,#1e3a5f,#3b82f6); border-radius:3px; }
+
+/* ============================================
    ATS SCORE PAGE
    ============================================ */
 .ats-page { min-height: 100vh; display: flex; flex-direction: column; }

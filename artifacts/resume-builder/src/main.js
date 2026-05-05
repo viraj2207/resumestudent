@@ -9,7 +9,16 @@ const TEMPLATES = [
   { id: 'creative',  name: 'Creative Edge',         desc: 'Vibrant gradient sidebar with skill indicators — made for designers & marketers.' },
   { id: 'minimal',   name: 'Minimal Clean',         desc: 'Ultra-clean layout with elegant typography — timeless and versatile.' },
   { id: 'executive', name: 'Executive Elite',       desc: 'Premium dark-header with gold accents — suited for C-level & senior roles.' },
-  { id: 'techpro',   name: 'Tech Pro',              desc: 'Dark theme with monospace accents — built for engineers & developers.' }
+  { id: 'techpro',   name: 'Tech Pro',              desc: 'Dark theme with monospace accents — built for engineers & developers.' },
+  { id: 'bold',      name: 'Bold Impact',           desc: 'High-contrast design with thick accents — made to grab attention instantly.' },
+  { id: 'academic',  name: 'Academic Scholar',      desc: 'Traditional academic style — ideal for research, teaching & graduate applications.' },
+  { id: 'startup',   name: 'Startup Vibe',          desc: 'Card-based modern layout with colorful badges — great for tech startups.' },
+  { id: 'corporate', name: 'Corporate Navy',        desc: 'Full dark-navy professional theme — commands authority in any boardroom.' },
+  { id: 'gradient',  name: 'Gradient Flow',         desc: 'Bold purple-to-blue gradient header — fresh and memorable design.' },
+  { id: 'compact',   name: 'Compact Pro',           desc: 'Space-efficient dense layout — fits more content without sacrificing clarity.' },
+  { id: 'elegant',   name: 'Elegant Serif',         desc: 'Playfair Display headings with warm tones — luxury feel for premium roles.' },
+  { id: 'dark',      name: 'Dark Matter',           desc: 'Single-column dark theme with neon accents — bold and modern statement.' },
+  { id: 'twotone',   name: 'Two Tone',              desc: 'Split-panel header with dual-color design — distinctive and professional.' }
 ];
 
 const SKILL_LEVELS = ['Beginner', 'Intermediate', 'Advanced', 'Expert'];
@@ -801,6 +810,15 @@ function getResumeHTML(templateId, data) {
     case 'minimal':   return minimalTemplate(data);
     case 'executive': return executiveTemplate(data);
     case 'techpro':   return techproTemplate(data);
+    case 'bold':      return boldTemplate(data);
+    case 'academic':  return academicTemplate(data);
+    case 'startup':   return startupTemplate(data);
+    case 'corporate': return corporateTemplate(data);
+    case 'gradient':  return gradientTemplate(data);
+    case 'compact':   return compactTemplate(data);
+    case 'elegant':   return elegantTemplate(data);
+    case 'dark':      return darkTemplate(data);
+    case 'twotone':   return twotoneTemplate(data);
     default:          return modernTemplate(data);
   }
 }
@@ -1236,6 +1254,405 @@ function techproTemplate(d) {
           <div class="r-item-sub">${esc(e.degree)}${e.field?` · ${esc(e.field)}`:''} ${e.gpa?`· GPA ${esc(e.gpa)}`:''}</div>
         </div>`).join('')}
       </div>`:''}
+    </div>
+  </div>`;
+}
+
+// --- BOLD IMPACT (7) ---
+function boldTemplate(d) {
+  const p = d.personal;
+  const contacts = [p.email, p.phone, p.location, p.linkedin, p.github].filter(Boolean);
+  return `
+  <div class="resume-bold">
+    <div class="r-bold-header">
+      <div class="r-bold-name">${esc(p.name)||'YOUR NAME'}</div>
+      <div class="r-bold-role">${d.experience[0]?.position||'Professional'}</div>
+      <div class="r-bold-contacts">${contacts.map(c=>`<span>${esc(c)}</span>`).join('<span class="r-bold-sep">|</span>')}</div>
+    </div>
+    <div class="r-bold-body">
+      ${p.summary?`<div class="r-bold-section"><div class="r-bold-title">PROFILE</div><p class="r-bold-text">${esc(p.summary)}</p></div>`:''}
+      ${d.experience.length?`<div class="r-bold-section"><div class="r-bold-title">EXPERIENCE</div>
+        ${d.experience.map(e=>`<div class="r-bold-item">
+          <div class="r-bold-item-head"><strong>${esc(e.position)}</strong><span>${esc(e.startDate)}${e.endDate?` – ${esc(e.endDate)}`:''}</span></div>
+          <div class="r-bold-company">${esc(e.company)}</div>
+          <div class="r-bold-text">${esc(e.description)}</div>
+        </div>`).join('')}</div>`:''}
+      ${d.education.length?`<div class="r-bold-section"><div class="r-bold-title">EDUCATION</div>
+        ${d.education.map(e=>`<div class="r-bold-item">
+          <div class="r-bold-item-head"><strong>${esc(e.institution)}</strong><span>${esc(e.startYear)}${e.endYear?` – ${esc(e.endYear)}`:''}</span></div>
+          <div class="r-bold-company">${esc(e.degree)}${e.field?`, ${esc(e.field)}`:''} ${e.gpa?`· GPA ${esc(e.gpa)}`:''}</div>
+        </div>`).join('')}</div>`:''}
+      ${d.skills.length?`<div class="r-bold-section"><div class="r-bold-title">SKILLS</div>
+        <div class="r-bold-skills">${d.skills.map(s=>`<span class="r-bold-skill">${esc(s.name)}</span>`).join('')}</div></div>`:''}
+      ${d.projects.length?`<div class="r-bold-section"><div class="r-bold-title">PROJECTS</div>
+        ${d.projects.map(pr=>`<div class="r-bold-item">
+          <div class="r-bold-item-head"><strong>${esc(pr.name)}</strong>${pr.url?`<span>${esc(pr.url)}</span>`:''}</div>
+          <div class="r-bold-company">${esc(pr.technologies)}</div>
+          <div class="r-bold-text">${esc(pr.description)}</div>
+        </div>`).join('')}</div>`:''}
+      ${d.certifications.length?`<div class="r-bold-section"><div class="r-bold-title">CERTIFICATIONS</div>
+        <div class="r-bold-skills">${d.certifications.map(c=>`<span class="r-bold-skill">${esc(c.name)} ${c.year?`(${esc(c.year)})`:''}</span>`).join('')}</div></div>`:''}
+    </div>
+  </div>`;
+}
+
+// --- ACADEMIC SCHOLAR (8) ---
+function academicTemplate(d) {
+  const p = d.personal;
+  const contacts = [p.email, p.phone, p.location, p.linkedin, p.website].filter(Boolean);
+  return `
+  <div class="resume-academic">
+    <div class="r-acad-header">
+      <div class="r-acad-name">${esc(p.name)||'Your Name'}</div>
+      <div class="r-acad-role">${d.experience[0]?.position||d.education[0]?.degree||'Researcher'}</div>
+      <div class="r-acad-contact">${contacts.join('  ·  ')}</div>
+    </div>
+    <div class="r-acad-rule"></div>
+    <div class="r-acad-body">
+      ${p.summary?`<div class="r-acad-section"><div class="r-acad-title">Research Interests / Summary</div><p class="r-acad-text">${esc(p.summary)}</p></div>`:''}
+      ${d.education.length?`<div class="r-acad-section"><div class="r-acad-title">Education</div>
+        ${d.education.map(e=>`<div class="r-acad-item">
+          <div class="r-acad-item-row"><strong class="r-acad-inst">${esc(e.institution)}</strong><span class="r-acad-date">${esc(e.startYear)}${e.endYear?` – ${esc(e.endYear)}`:''}</span></div>
+          <div class="r-acad-sub">${esc(e.degree)}${e.field?` in ${esc(e.field)}`:''} ${e.gpa?`· GPA: ${esc(e.gpa)}`:''}</div>
+        </div>`).join('')}</div>`:''}
+      ${d.experience.length?`<div class="r-acad-section"><div class="r-acad-title">Academic / Professional Experience</div>
+        ${d.experience.map(e=>`<div class="r-acad-item">
+          <div class="r-acad-item-row"><strong class="r-acad-inst">${esc(e.position)}</strong><span class="r-acad-date">${esc(e.startDate)}${e.endDate?` – ${esc(e.endDate)}`:''}</span></div>
+          <div class="r-acad-sub">${esc(e.company)}</div>
+          <div class="r-acad-text">${esc(e.description)}</div>
+        </div>`).join('')}</div>`:''}
+      ${d.projects.length?`<div class="r-acad-section"><div class="r-acad-title">Research Projects</div>
+        ${d.projects.map(pr=>`<div class="r-acad-item">
+          <div class="r-acad-item-row"><strong class="r-acad-inst">${esc(pr.name)}</strong>${pr.url?`<span class="r-acad-date">${esc(pr.url)}</span>`:''}</div>
+          <div class="r-acad-sub">${esc(pr.technologies)}</div>
+          <div class="r-acad-text">${esc(pr.description)}</div>
+        </div>`).join('')}</div>`:''}
+      ${d.skills.length?`<div class="r-acad-section"><div class="r-acad-title">Technical Skills</div>
+        <div class="r-acad-skills">${d.skills.map(s=>`<span class="r-acad-skill">${esc(s.name)} <em>(${s.level})</em></span>`).join(' &nbsp;·&nbsp; ')}</div></div>`:''}
+      ${d.certifications.length?`<div class="r-acad-section"><div class="r-acad-title">Certifications & Awards</div>
+        ${d.certifications.map(c=>`<div class="r-acad-item"><div class="r-acad-item-row"><span class="r-acad-inst">${esc(c.name)}</span><span class="r-acad-date">${c.year||''}</span></div><div class="r-acad-sub">${esc(c.issuer)}</div></div>`).join('')}</div>`:''}
+    </div>
+  </div>`;
+}
+
+// --- STARTUP VIBE (9) ---
+function startupTemplate(d) {
+  const p = d.personal;
+  const levelColor = {'Beginner':'#f59e0b','Intermediate':'#06b6d4','Advanced':'#8b5cf6','Expert':'#10b981'};
+  return `
+  <div class="resume-startup">
+    <div class="r-startup-header">
+      <div class="r-startup-avatar">${(p.name||'?').charAt(0).toUpperCase()}</div>
+      <div>
+        <div class="r-startup-name">${esc(p.name)||'Your Name'}</div>
+        <div class="r-startup-role">${d.experience[0]?.position||'Professional'}</div>
+        <div class="r-startup-contacts">
+          ${[p.email,p.phone,p.location].filter(Boolean).map(c=>`<span class="r-startup-contact">${esc(c)}</span>`).join('')}
+        </div>
+      </div>
+      <div class="r-startup-links">
+        ${p.linkedin?`<div class="r-startup-link">🔗 ${esc(p.linkedin)}</div>`:''}
+        ${p.github?`<div class="r-startup-link">⌥ ${esc(p.github)}</div>`:''}
+        ${p.website?`<div class="r-startup-link">🌐 ${esc(p.website)}</div>`:''}
+      </div>
+    </div>
+    <div class="r-startup-body">
+      ${p.summary?`<div class="r-startup-card"><div class="r-startup-section-title">👋 About Me</div><p class="r-startup-text">${esc(p.summary)}</p></div>`:''}
+      <div class="r-startup-grid">
+        <div>
+          ${d.experience.length?`<div class="r-startup-card"><div class="r-startup-section-title">💼 Experience</div>
+            ${d.experience.map(e=>`<div class="r-startup-item">
+              <div class="r-startup-item-title">${esc(e.position)}</div>
+              <div class="r-startup-item-sub">${esc(e.company)} · <span style="color:#9ca3af">${esc(e.startDate)}${e.endDate?`–${esc(e.endDate)}`:''}</span></div>
+              <div class="r-startup-text">${esc(e.description)}</div>
+            </div>`).join('')}</div>`:''}
+          ${d.projects.length?`<div class="r-startup-card"><div class="r-startup-section-title">🚀 Projects</div>
+            ${d.projects.map(pr=>`<div class="r-startup-item">
+              <div class="r-startup-item-title">${esc(pr.name)} ${pr.url?`<span style="font-size:0.72rem;color:#6366f1">${esc(pr.url)}</span>`:''}</div>
+              <div class="r-startup-text">${esc(pr.description)}</div>
+              <div style="margin-top:0.3rem">${pr.technologies.split(',').map(t=>`<span class="r-startup-badge" style="background:rgba(99,102,241,0.1);color:#6366f1;border-color:rgba(99,102,241,0.3)">${t.trim()}</span>`).join('')}</div>
+            </div>`).join('')}</div>`:''}
+        </div>
+        <div>
+          ${d.skills.length?`<div class="r-startup-card"><div class="r-startup-section-title">⚡ Skills</div>
+            <div class="r-startup-skills">${d.skills.map(s=>`<span class="r-startup-badge" style="background:${levelColor[s.level]||'#6366f1'}18;color:${levelColor[s.level]||'#6366f1'};border-color:${levelColor[s.level]||'#6366f1'}44">${esc(s.name)}</span>`).join('')}</div></div>`:''}
+          ${d.education.length?`<div class="r-startup-card"><div class="r-startup-section-title">🎓 Education</div>
+            ${d.education.map(e=>`<div class="r-startup-item">
+              <div class="r-startup-item-title">${esc(e.institution)}</div>
+              <div class="r-startup-item-sub">${esc(e.degree)}${e.field?`, ${esc(e.field)}`:''}</div>
+              <div style="font-size:0.75rem;color:#9ca3af">${esc(e.startYear)}${e.endYear?`–${esc(e.endYear)}`:''} ${e.gpa?`· GPA ${esc(e.gpa)}`:''}</div>
+            </div>`).join('')}</div>`:''}
+          ${d.certifications.length?`<div class="r-startup-card"><div class="r-startup-section-title">🏆 Certs</div>
+            ${d.certifications.map(c=>`<div class="r-startup-item"><div class="r-startup-item-title">${esc(c.name)}</div><div class="r-startup-item-sub">${esc(c.issuer)} ${c.year?`· ${esc(c.year)}`:''}</div></div>`).join('')}</div>`:''}
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// --- CORPORATE NAVY (10) ---
+function corporateTemplate(d) {
+  const p = d.personal;
+  return `
+  <div class="resume-corporate">
+    <div class="r-corp-sidebar">
+      <div class="r-corp-logo">${(p.name||'?').split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2)}</div>
+      <div class="r-corp-name">${esc(p.name)||'Your Name'}</div>
+      <div class="r-corp-role">${d.experience[0]?.position||'Professional'}</div>
+      <div class="r-corp-divider"></div>
+      ${p.email||p.phone||p.location?`<div class="r-corp-section"><div class="r-corp-stitle">Contact</div>
+        ${p.email?`<div class="r-corp-info">${esc(p.email)}</div>`:''}
+        ${p.phone?`<div class="r-corp-info">${esc(p.phone)}</div>`:''}
+        ${p.location?`<div class="r-corp-info">${esc(p.location)}</div>`:''}
+        ${p.linkedin?`<div class="r-corp-info">${esc(p.linkedin)}</div>`:''}
+        ${p.github?`<div class="r-corp-info">${esc(p.github)}</div>`:''}
+        ${p.website?`<div class="r-corp-info">${esc(p.website)}</div>`:''}
+      </div>`:''}
+      ${d.skills.length?`<div class="r-corp-section"><div class="r-corp-stitle">Expertise</div>
+        ${d.skills.map(s=>`<div class="r-corp-skill-row">
+          <span style="font-size:0.78rem;color:#cbd5e1">${esc(s.name)}</span>
+          <div class="r-corp-bar"><div class="r-corp-bar-fill" style="width:${skillPct(s.level)}%"></div></div>
+        </div>`).join('')}</div>`:''}
+      ${d.certifications.length?`<div class="r-corp-section"><div class="r-corp-stitle">Certifications</div>
+        ${d.certifications.map(c=>`<div style="margin-bottom:0.6rem"><div style="font-size:0.78rem;color:#f1f5f9;font-weight:600">${esc(c.name)}</div><div style="font-size:0.72rem;color:#94a3b8">${esc(c.issuer)} ${c.year||''}</div></div>`).join('')}</div>`:''}
+    </div>
+    <div class="r-corp-main">
+      ${p.summary?`<div class="r-corp-msection"><div class="r-corp-mtitle">Executive Summary</div><p class="r-corp-mtext">${esc(p.summary)}</p></div>`:''}
+      ${d.experience.length?`<div class="r-corp-msection"><div class="r-corp-mtitle">Professional Experience</div>
+        ${d.experience.map(e=>`<div class="r-corp-mitem">
+          <div class="r-corp-mhead"><strong>${esc(e.position)}</strong><span class="r-corp-mdate">${esc(e.startDate)}${e.endDate?` – ${esc(e.endDate)}`:''}</span></div>
+          <div class="r-corp-mcompany">${esc(e.company)}</div>
+          <p class="r-corp-mtext">${esc(e.description)}</p>
+        </div>`).join('')}</div>`:''}
+      ${d.education.length?`<div class="r-corp-msection"><div class="r-corp-mtitle">Education</div>
+        ${d.education.map(e=>`<div class="r-corp-mitem">
+          <div class="r-corp-mhead"><strong>${esc(e.institution)}</strong><span class="r-corp-mdate">${esc(e.startYear)}${e.endYear?` – ${esc(e.endYear)}`:''}</span></div>
+          <div class="r-corp-mcompany">${esc(e.degree)}${e.field?`, ${esc(e.field)}`:''} ${e.gpa?`· GPA ${esc(e.gpa)}`:''}</div>
+        </div>`).join('')}</div>`:''}
+      ${d.projects.length?`<div class="r-corp-msection"><div class="r-corp-mtitle">Key Projects</div>
+        ${d.projects.map(pr=>`<div class="r-corp-mitem">
+          <div class="r-corp-mhead"><strong>${esc(pr.name)}</strong>${pr.url?`<span class="r-corp-mdate">${esc(pr.url)}</span>`:''}</div>
+          <div class="r-corp-mcompany">${esc(pr.technologies)}</div>
+          <p class="r-corp-mtext">${esc(pr.description)}</p>
+        </div>`).join('')}</div>`:''}
+    </div>
+  </div>`;
+}
+
+// --- GRADIENT FLOW (11) ---
+function gradientTemplate(d) {
+  const p = d.personal;
+  const contacts = [p.email, p.phone, p.location].filter(Boolean);
+  return `
+  <div class="resume-gradient">
+    <div class="r-grad-header">
+      <div class="r-grad-name">${esc(p.name)||'Your Name'}</div>
+      <div class="r-grad-role">${d.experience[0]?.position||'Professional'}</div>
+      <div class="r-grad-contacts">${contacts.map(c=>`<span>${esc(c)}</span>`).join('  ·  ')} ${p.linkedin?`  ·  ${esc(p.linkedin)}`:''} ${p.github?`  ·  ${esc(p.github)}`:''}</div>
+    </div>
+    <div class="r-grad-body">
+      <div class="r-grad-left">
+        ${p.summary?`<div class="r-grad-section"><div class="r-grad-stitle">About</div><p class="r-grad-text">${esc(p.summary)}</p></div>`:''}
+        ${d.experience.length?`<div class="r-grad-section"><div class="r-grad-stitle">Experience</div>
+          ${d.experience.map(e=>`<div class="r-grad-item">
+            <div class="r-grad-item-title">${esc(e.position)}</div>
+            <div class="r-grad-item-sub">${esc(e.company)} <span>· ${esc(e.startDate)}${e.endDate?`–${esc(e.endDate)}`:''}</span></div>
+            <p class="r-grad-text">${esc(e.description)}</p>
+          </div>`).join('')}</div>`:''}
+        ${d.projects.length?`<div class="r-grad-section"><div class="r-grad-stitle">Projects</div>
+          ${d.projects.map(pr=>`<div class="r-grad-item">
+            <div class="r-grad-item-title">${esc(pr.name)}</div>
+            <div class="r-grad-item-sub">${esc(pr.technologies)}</div>
+            <p class="r-grad-text">${esc(pr.description)}</p>
+          </div>`).join('')}</div>`:''}
+      </div>
+      <div class="r-grad-right">
+        ${d.skills.length?`<div class="r-grad-section"><div class="r-grad-stitle">Skills</div>
+          ${d.skills.map(s=>`<div class="r-grad-skill-row">
+            <span style="font-size:0.82rem;color:#374151;font-weight:500">${esc(s.name)}</span>
+            <div class="r-grad-bar"><div class="r-grad-bar-fill" style="width:${skillPct(s.level)}%"></div></div>
+          </div>`).join('')}</div>`:''}
+        ${d.education.length?`<div class="r-grad-section"><div class="r-grad-stitle">Education</div>
+          ${d.education.map(e=>`<div class="r-grad-item">
+            <div class="r-grad-item-title">${esc(e.institution)}</div>
+            <div class="r-grad-item-sub">${esc(e.degree)}${e.field?`, ${esc(e.field)}`:''}</div>
+            <div style="font-size:0.75rem;color:#9ca3af">${esc(e.startYear)}${e.endYear?`–${esc(e.endYear)}`:''} ${e.gpa?`· GPA ${esc(e.gpa)}`:''}</div>
+          </div>`).join('')}</div>`:''}
+        ${d.certifications.length?`<div class="r-grad-section"><div class="r-grad-stitle">Certifications</div>
+          ${d.certifications.map(c=>`<div class="r-grad-item"><div class="r-grad-item-title" style="font-size:0.82rem">${esc(c.name)}</div><div class="r-grad-item-sub">${esc(c.issuer)} ${c.year||''}</div></div>`).join('')}</div>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+// --- COMPACT PRO (12) ---
+function compactTemplate(d) {
+  const p = d.personal;
+  const contacts = [p.name&&'',p.email,p.phone,p.location,p.linkedin,p.github,p.website].filter(Boolean);
+  return `
+  <div class="resume-compact">
+    <div class="r-cmp-header">
+      <div class="r-cmp-name">${esc(p.name)||'Your Name'}</div>
+      <div class="r-cmp-contacts">${contacts.map(c=>`<span>${esc(c)}</span>`).join(' | ')}</div>
+    </div>
+    ${p.summary?`<div class="r-cmp-summary">${esc(p.summary)}</div>`:''}
+    ${d.experience.length?`<div class="r-cmp-section"><div class="r-cmp-stitle">PROFESSIONAL EXPERIENCE</div>
+      ${d.experience.map(e=>`<div class="r-cmp-item">
+        <div class="r-cmp-row"><strong>${esc(e.position)}</strong><span>${esc(e.startDate)}${e.endDate?` – ${esc(e.endDate)}`:''}</span></div>
+        <div class="r-cmp-sub">${esc(e.company)}</div>
+        <div class="r-cmp-desc">${esc(e.description)}</div>
+      </div>`).join('')}</div>`:''}
+    ${d.education.length?`<div class="r-cmp-section"><div class="r-cmp-stitle">EDUCATION</div>
+      ${d.education.map(e=>`<div class="r-cmp-item">
+        <div class="r-cmp-row"><strong>${esc(e.institution)}</strong><span>${esc(e.startYear)}${e.endYear?` – ${esc(e.endYear)}`:''}</span></div>
+        <div class="r-cmp-sub">${esc(e.degree)}${e.field?`, ${esc(e.field)}`:''} ${e.gpa?`| GPA: ${esc(e.gpa)}`:''}</div>
+      </div>`).join('')}</div>`:''}
+    <div class="r-cmp-two-col">
+      ${d.skills.length?`<div><div class="r-cmp-stitle">SKILLS</div><div class="r-cmp-skills">${d.skills.map(s=>`<span class="r-cmp-skill">${esc(s.name)}</span>`).join('')}</div></div>`:''}
+      ${d.certifications.length?`<div><div class="r-cmp-stitle">CERTIFICATIONS</div>${d.certifications.map(c=>`<div class="r-cmp-desc">${esc(c.name)}${c.year?` (${esc(c.year)})`:''}</div>`).join('')}</div>`:''}
+    </div>
+    ${d.projects.length?`<div class="r-cmp-section"><div class="r-cmp-stitle">PROJECTS</div>
+      ${d.projects.map(pr=>`<div class="r-cmp-item">
+        <div class="r-cmp-row"><strong>${esc(pr.name)}</strong>${pr.url?`<span>${esc(pr.url)}</span>`:''}</div>
+        <div class="r-cmp-sub">${esc(pr.technologies)}</div>
+        <div class="r-cmp-desc">${esc(pr.description)}</div>
+      </div>`).join('')}</div>`:''}
+  </div>`;
+}
+
+// --- ELEGANT SERIF (13) ---
+function elegantTemplate(d) {
+  const p = d.personal;
+  const contacts = [p.email, p.phone, p.location].filter(Boolean);
+  return `
+  <div class="resume-elegant">
+    <div class="r-eleg-header">
+      <div class="r-eleg-ornament">✦ ✦ ✦</div>
+      <div class="r-eleg-name">${esc(p.name)||'Your Name'}</div>
+      <div class="r-eleg-role">${d.experience[0]?.position||'Professional'}</div>
+      <div class="r-eleg-line"></div>
+      <div class="r-eleg-contacts">${contacts.join('  ·  ')}${p.linkedin?`  ·  ${esc(p.linkedin)}`:''}</div>
+    </div>
+    <div class="r-eleg-body">
+      <div class="r-eleg-main">
+        ${p.summary?`<div class="r-eleg-section"><div class="r-eleg-stitle">Profile</div><p class="r-eleg-text">${esc(p.summary)}</p></div>`:''}
+        ${d.experience.length?`<div class="r-eleg-section"><div class="r-eleg-stitle">Career History</div>
+          ${d.experience.map(e=>`<div class="r-eleg-item">
+            <div class="r-eleg-item-head"><em>${esc(e.company)}</em><span>${esc(e.startDate)}${e.endDate?` — ${esc(e.endDate)}`:''}</span></div>
+            <div class="r-eleg-position">${esc(e.position)}</div>
+            <p class="r-eleg-text">${esc(e.description)}</p>
+          </div>`).join('')}</div>`:''}
+        ${d.projects.length?`<div class="r-eleg-section"><div class="r-eleg-stitle">Notable Projects</div>
+          ${d.projects.map(pr=>`<div class="r-eleg-item">
+            <div class="r-eleg-item-head"><em>${esc(pr.name)}</em>${pr.url?`<span>${esc(pr.url)}</span>`:''}</div>
+            <div class="r-eleg-position">${esc(pr.technologies)}</div>
+            <p class="r-eleg-text">${esc(pr.description)}</p>
+          </div>`).join('')}</div>`:''}
+      </div>
+      <div class="r-eleg-side">
+        ${d.education.length?`<div class="r-eleg-section"><div class="r-eleg-stitle">Education</div>
+          ${d.education.map(e=>`<div class="r-eleg-item">
+            <div class="r-eleg-position">${esc(e.institution)}</div>
+            <div class="r-eleg-item-head"><em>${esc(e.degree)}${e.field?`, ${esc(e.field)}`:''}</em><span>${esc(e.endYear)||''}</span></div>
+            ${e.gpa?`<div style="font-size:0.75rem;color:#92400e">GPA: ${esc(e.gpa)}</div>`:''}
+          </div>`).join('')}</div>`:''}
+        ${d.skills.length?`<div class="r-eleg-section"><div class="r-eleg-stitle">Expertise</div>
+          <div class="r-eleg-skills">${d.skills.map(s=>`<span class="r-eleg-skill">${esc(s.name)}</span>`).join('')}</div></div>`:''}
+        ${d.certifications.length?`<div class="r-eleg-section"><div class="r-eleg-stitle">Honours</div>
+          ${d.certifications.map(c=>`<div class="r-eleg-item"><div class="r-eleg-position">${esc(c.name)}</div><div style="font-size:0.75rem;color:#78716c">${esc(c.issuer)} ${c.year||''}</div></div>`).join('')}</div>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+// --- DARK MATTER (14) ---
+function darkTemplate(d) {
+  const p = d.personal;
+  const contacts = [p.email, p.phone, p.location, p.linkedin, p.github].filter(Boolean);
+  return `
+  <div class="resume-dark">
+    <div class="r-dark-header">
+      <div class="r-dark-accent-line"></div>
+      <div class="r-dark-name">${esc(p.name)||'Your Name'}</div>
+      <div class="r-dark-role">${d.experience[0]?.position||'Developer'}</div>
+      <div class="r-dark-contacts">${contacts.map(c=>`<span>${esc(c)}</span>`).join('<span style="opacity:0.3;margin:0 0.5rem">|</span>')}</div>
+    </div>
+    <div class="r-dark-body">
+      ${p.summary?`<div class="r-dark-section"><div class="r-dark-stitle"><span class="r-dark-hash">#</span> about</div><p class="r-dark-text">${esc(p.summary)}</p></div>`:''}
+      ${d.experience.length?`<div class="r-dark-section"><div class="r-dark-stitle"><span class="r-dark-hash">#</span> experience</div>
+        ${d.experience.map(e=>`<div class="r-dark-item">
+          <div class="r-dark-item-head"><strong>${esc(e.position)}</strong><span class="r-dark-date">${esc(e.startDate)}${e.endDate?` → ${esc(e.endDate)}`:''}</span></div>
+          <div class="r-dark-company">> ${esc(e.company)}</div>
+          <p class="r-dark-text">${esc(e.description)}</p>
+        </div>`).join('')}</div>`:''}
+      ${d.skills.length?`<div class="r-dark-section"><div class="r-dark-stitle"><span class="r-dark-hash">#</span> skills</div>
+        <div class="r-dark-skills">${d.skills.map(s=>`<span class="r-dark-skill">${esc(s.name)}</span>`).join('')}</div></div>`:''}
+      ${d.projects.length?`<div class="r-dark-section"><div class="r-dark-stitle"><span class="r-dark-hash">#</span> projects</div>
+        ${d.projects.map(pr=>`<div class="r-dark-item">
+          <div class="r-dark-item-head"><strong>${esc(pr.name)}</strong>${pr.url?`<span class="r-dark-date">${esc(pr.url)}</span>`:''}</div>
+          <div class="r-dark-company">> ${esc(pr.technologies)}</div>
+          <p class="r-dark-text">${esc(pr.description)}</p>
+        </div>`).join('')}</div>`:''}
+      ${d.education.length?`<div class="r-dark-section"><div class="r-dark-stitle"><span class="r-dark-hash">#</span> education</div>
+        ${d.education.map(e=>`<div class="r-dark-item">
+          <div class="r-dark-item-head"><strong>${esc(e.institution)}</strong><span class="r-dark-date">${esc(e.startYear)}${e.endYear?` → ${esc(e.endYear)}`:''}</span></div>
+          <div class="r-dark-company">> ${esc(e.degree)}${e.field?` · ${esc(e.field)}`:''} ${e.gpa?`· GPA ${esc(e.gpa)}`:''}</div>
+        </div>`).join('')}</div>`:''}
+      ${d.certifications.length?`<div class="r-dark-section"><div class="r-dark-stitle"><span class="r-dark-hash">#</span> certifications</div>
+        <div class="r-dark-skills">${d.certifications.map(c=>`<span class="r-dark-skill">${esc(c.name)} ${c.year?`(${c.year})`:''}</span>`).join('')}</div></div>`:''}
+    </div>
+  </div>`;
+}
+
+// --- TWO TONE (15) ---
+function twotoneTemplate(d) {
+  const p = d.personal;
+  return `
+  <div class="resume-twotone">
+    <div class="r-tt-header">
+      <div class="r-tt-left-head">
+        <div class="r-tt-name">${esc(p.name)||'Your Name'}</div>
+        <div class="r-tt-role">${d.experience[0]?.position||'Professional'}</div>
+      </div>
+      <div class="r-tt-right-head">
+        <div class="r-tt-contact">${p.email?`<div>${esc(p.email)}</div>`:''}</div>
+        <div class="r-tt-contact">${p.phone?`<div>${esc(p.phone)}</div>`:''}</div>
+        <div class="r-tt-contact">${p.location?`<div>${esc(p.location)}</div>`:''}</div>
+        <div class="r-tt-contact">${p.linkedin?`<div>${esc(p.linkedin)}</div>`:''}</div>
+        <div class="r-tt-contact">${p.github?`<div>${esc(p.github)}</div>`:''}</div>
+      </div>
+    </div>
+    <div class="r-tt-body">
+      <div class="r-tt-main">
+        ${p.summary?`<div class="r-tt-section"><div class="r-tt-stitle">Professional Summary</div><p class="r-tt-text">${esc(p.summary)}</p></div>`:''}
+        ${d.experience.length?`<div class="r-tt-section"><div class="r-tt-stitle">Work Experience</div>
+          ${d.experience.map(e=>`<div class="r-tt-item">
+            <div class="r-tt-item-head"><strong>${esc(e.position)}</strong><span class="r-tt-date">${esc(e.startDate)}${e.endDate?` – ${esc(e.endDate)}`:''}</span></div>
+            <div class="r-tt-company">${esc(e.company)}</div>
+            <p class="r-tt-text">${esc(e.description)}</p>
+          </div>`).join('')}</div>`:''}
+        ${d.projects.length?`<div class="r-tt-section"><div class="r-tt-stitle">Projects</div>
+          ${d.projects.map(pr=>`<div class="r-tt-item">
+            <div class="r-tt-item-head"><strong>${esc(pr.name)}</strong>${pr.url?`<span class="r-tt-date">${esc(pr.url)}</span>`:''}</div>
+            <div class="r-tt-company">${esc(pr.technologies)}</div>
+            <p class="r-tt-text">${esc(pr.description)}</p>
+          </div>`).join('')}</div>`:''}
+      </div>
+      <div class="r-tt-side">
+        ${d.education.length?`<div class="r-tt-section"><div class="r-tt-stitle">Education</div>
+          ${d.education.map(e=>`<div class="r-tt-item">
+            <div style="font-size:0.85rem;font-weight:700;color:#fff">${esc(e.institution)}</div>
+            <div style="font-size:0.78rem;color:#cbd5e1;margin:0.2rem 0">${esc(e.degree)}${e.field?`, ${esc(e.field)}`:''}</div>
+            <div style="font-size:0.73rem;color:#94a3b8">${esc(e.startYear)}${e.endYear?`–${esc(e.endYear)}`:''} ${e.gpa?`· GPA ${esc(e.gpa)}`:''}</div>
+          </div>`).join('')}</div>`:''}
+        ${d.skills.length?`<div class="r-tt-section"><div class="r-tt-stitle">Skills</div>
+          <div>${d.skills.map(s=>`<div class="r-tt-skill-row">
+            <span style="font-size:0.78rem;color:#e2e8f0">${esc(s.name)}</span>
+            <div class="r-tt-bar"><div class="r-tt-bar-fill" style="width:${skillPct(s.level)}%"></div></div>
+          </div>`).join('')}</div></div>`:''}
+        ${d.certifications.length?`<div class="r-tt-section"><div class="r-tt-stitle">Certifications</div>
+          ${d.certifications.map(c=>`<div class="r-tt-item"><div style="font-size:0.78rem;font-weight:600;color:#e2e8f0">${esc(c.name)}</div><div style="font-size:0.72rem;color:#94a3b8">${esc(c.issuer)} ${c.year||''}</div></div>`).join('')}</div>`:''}
+      </div>
     </div>
   </div>`;
 }
