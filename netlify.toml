@@ -1,0 +1,8 @@
+[build]
+  base = "artifacts/resume-builder"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  PORT = "8081"
+  BASE_PATH = "/"
