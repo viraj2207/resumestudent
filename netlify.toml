@@ -1,7 +1,7 @@
 [build]
   base = "artifacts/resume-builder"
   command = "npm run build"
-  publish = "dist"
+  publish = "public"
 
 [build.environment]
   PORT = "8081"
