@@ -1,7 +1,8 @@
 import { navigate } from '../router.js';
 import { state } from '../state.js';
-import { debounce } from '../utils/helpers.js';
+import { debounce, showToast } from '../utils/helpers.js';
 import { triggerDownload } from './preview.js';
+import { exportToDocx } from '../utils/exportDocx.js';
 
 export function renderATS() {
   const score = computeATSScore(state.resume, '');
@@ -88,7 +89,8 @@ export function renderATS() {
 
         <div class="ats-actions-row">
           <button class="btn-primary" data-nav="editor" style="flex:1">✏️ Edit Resume</button>
-          <button class="btn-download" id="ats-download-btn" style="flex:1;justify-content:center">⬇ Download PDF</button>
+          <button class="btn-download" id="ats-download-btn" style="flex:1;justify-content:center">⬇ PDF</button>
+          <button class="btn-word" id="ats-word-btn" style="flex:1;justify-content:center">⬇ Word</button>
         </div>
       </div>
     </div>
@@ -133,6 +135,10 @@ export function bindATSEvents() {
   }, 400));
 
   document.getElementById('ats-download-btn')?.addEventListener('click', triggerDownload);
+  document.getElementById('ats-word-btn')?.addEventListener('click', () => {
+    showToast('Generating Word document…', 'info');
+    exportToDocx(state).catch(() => showToast('Failed to generate Word file.', 'error'));
+  });
 }
 
 function animateScore(target) {

@@ -3,6 +3,7 @@ import { state } from '../state.js';
 import { TEMPLATES } from '../data/config.js';
 import { getResumeHTML } from '../templates/index.js';
 import { showToast } from '../utils/helpers.js';
+import { exportToDocx } from '../utils/exportDocx.js';
 
 export function renderPreview() {
   return `
@@ -17,7 +18,8 @@ export function renderPreview() {
         <div style="display:flex;gap:0.4rem;align-items:center;flex-wrap:wrap;">
           ${TEMPLATES.map(t => `<button class="tpl-chip ${state.template === t.id ? 'active' : ''}" data-tpl="${t.id}" title="${t.name}">${t.name.split(' ')[0]}</button>`).join('')}
         </div>
-        <button class="btn-download" id="btn-download">⬇ Download PDF</button>
+        <button class="btn-download" id="btn-download">⬇ PDF</button>
+        <button class="btn-word" id="btn-word">⬇ Word</button>
       </div>
     </nav>
     <div class="full-preview">
@@ -44,6 +46,10 @@ export function bindPreviewEvents() {
   });
 
   document.getElementById('btn-download')?.addEventListener('click', triggerDownload);
+  document.getElementById('btn-word')?.addEventListener('click', () => {
+    showToast('Generating Word document…', 'info');
+    exportToDocx(state).catch(() => showToast('Failed to generate Word file.', 'error'));
+  });
 }
 
 export function triggerDownload() {
